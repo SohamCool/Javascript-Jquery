@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>Converting an JSON data in javaScript Object</h2>
+	<p id="text"></p>
+	<script type="text/javascript">
+	const txt = '{"name":"John", "age":30, "city":"New York"}'
+		const obj = JSON.parse(txt);
+		document.getElementById("text").innerHTML = obj.name + ", " + obj.age;
+	</script>
+</body>
+</html>
