@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="container">
+		<h2>The XMLHttpRequestObject</h2>
+		<button onclick="loadfile()">Get My CD Collection</button>
+</div>
+<table id="recTable" border="1" border-collapse></table>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+ -->
+<script>
+function load() {
+    let tx = new XMLHttpRequest();
+
+    tx.onreadystatechange = () => {
+        if (tx.status == 200 && tx.readyState == 4)
+        var table = "<tr><th>Artist</th><th>Title</th></tr>";
+        var x = tx.responseXML.getElementsByTagName("CD");
+        for (i = 0; i < x.length; i++) {
+            table += "<tr><td>" +
+                x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+                "</td></tr>";
+        }
+        document.getElementById("recTable").innerHTML = table;
+    };
+
+    
+    
+    tx.open("GET", "data.xml", true);
+    tx.send();
+}
+</script>
+</body>
+</html>

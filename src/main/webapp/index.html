@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="container">
+		<h2>The XMLHttpRequestObject</h2>
+		<button onclick="loadfile()">Change Content</button>
+</div>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+ -->
+<script>
+function loadfile(){
+    let req = new XMLHttpRequest();
+
+    text.onreadystatechange = ()=>{
+        if(req.status == 200 && req.readyState == 4)
+        document.getElementById("container").innerHTML=req.responseText;
+    };
+
+    text.open("GET","ajax_info.txt",true);
+    text.send();
+}
+</script>
+</body>
+</html>
